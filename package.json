@@ -1,0 +1,24 @@
+{
+  "name": "appqr",
+  "version": "1.0.0",
+  "description": "app para identificacion mediante codigo QR",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CelenyAndrea/appQR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CelenyAndrea/appQR/issues"
+  },
+  "homepage": "https://github.com/CelenyAndrea/appQR#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
