@@ -7,25 +7,29 @@ import PetsForm from "./pages/PetsForm.jsx"
 import Profile from "./pages/Profile.jsx"
 import Home from "./pages/Home.jsx"
 import ProtectedRoute from "./ProtectedRoute.jsx"
+import { PetProvider } from "./context/PetsContext.jsx"
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/register" element={<RegisterPage/>} />
+      <PetProvider>
+        <BrowserRouter>
+          <Routes>
 
-          <Route element = {<ProtectedRoute/>}>
-            <Route path="/pets" element={<Pets/>} />
-            <Route path="/add-pet" element={<PetsForm/>} />
-            <Route path="/pet/:id" element={<PetsForm/>} />
-            <Route path="/profile" element={<Profile/>} />
-          </Route>
-          
-        </Routes>
-      </BrowserRouter>
+            <Route path="/" element={<Home/>} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/register" element={<RegisterPage/>} />
+
+            <Route element = {<ProtectedRoute/>}>
+              <Route path="/pets" element={<Pets/>} />
+              <Route path="/add-pet" element={<PetsForm/>} />
+              <Route path="/pet/:id" element={<PetsForm/>} />
+              <Route path="/profile" element={<Profile/>} />
+            </Route>
+
+          </Routes>
+        </BrowserRouter>
+      </PetProvider>
     </AuthProvider> 
   ) 
 }

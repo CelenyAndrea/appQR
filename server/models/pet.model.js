@@ -11,8 +11,8 @@ const PetSchema = new mongoose.Schema({
     },
     image: {
         type : String,
-        data: Buffer,
-        contentType: String,
+        // data: Buffer,
+        // contentType: String,
         required : true
     }, 
     description: {
@@ -42,7 +42,7 @@ const PetSchema = new mongoose.Schema({
     user: {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User",
-        required : true
+        required : false
     },
 },  {
     timestamps: true

@@ -12,8 +12,8 @@ export const createPetSchema = z.object({
     barrio: z.string(
         {required_error: "En que barrio vive"}),
     address: z.string().optional(),
-    contacts: z.object(
-        {required_error: "Es nesesario el nombre del humano a contactar"}),
-    phones: z.string(
-        {required_error: "Es nesesario el numero de telefono del humano a contactar"})
+    // contacts: z.object(
+    //     {required_error: "Es necesario el nombre del humano a contactar"}),
+    // phones: z.string(
+    //     {required_error: "Es necesario el numero de telefono del humano a contactar"})
 })
