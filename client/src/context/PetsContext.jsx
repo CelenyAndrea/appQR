@@ -22,8 +22,7 @@ export function PetProvider({ children }) {
         city: "",
         barrio: "",
         address: "",
-        contacts: [],
-        phones: [],
+        contacts: [{contact:"", phone: 0}],
         user: ""
     })
 

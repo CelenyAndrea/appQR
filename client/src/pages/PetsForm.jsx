@@ -1,14 +1,19 @@
-import { useForm } from 'react-hook-form'
+import { useForm, useFieldArray } from 'react-hook-form'
 import { usePets } from '../context/PetsContext';
 
 function PetsForm() {
 
-  const {register, handleSubmit} = useForm();
+  const {control, register, handleSubmit} = useForm();
   const {createPets} = usePets();
-
+  
   const onSubmit = handleSubmit((data) => {
     console.log(data);
     createPets(data);
+  })
+  
+  const {fields} = useFieldArray({
+    control,
+    name: "contacts",
   })
 
   return (
@@ -103,6 +108,25 @@ function PetsForm() {
           />
         </div>
 
+        {/* {fields.map((field, i) => (
+          <div key={field.id}>
+            <span>La persona que la encuentre debe llamar a:</span>
+            <input 
+              type="text" 
+              placeholder="Nombre del humano" 
+              className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
+              {...register(`contacts.${i}.contact`)}
+            />
+
+            <span>Número de telefono:</span>
+            <input 
+              type="number" 
+              className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
+              {...register(`contacts.${i}.phone`)}
+            />
+          </div>
+        ))} */}
+        
         <div>
           <span>La persona que la encuentre debe llamar a:</span>
           <input 
@@ -111,7 +135,7 @@ function PetsForm() {
             name="contact" 
             id="contact"
             className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("contacts")}
+            {...register("contacts.contact")}
           />
 
           <span>Número de telefono:</span>
@@ -120,7 +144,7 @@ function PetsForm() {
             name="phone" 
             id="phone"
             className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("phones")}
+            {...register("contacts.phone")}
           />
         </div>
 

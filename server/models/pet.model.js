@@ -32,12 +32,14 @@ const PetSchema = new mongoose.Schema({
         required : false
     },
     contacts : [{
-        type : String,
-        required : true
-    }],
-    phones: [{
-        type : Number,
-        required : true
+        contact: {
+            type : String,
+            required : true
+        },
+        phone: {
+            type : Number ,
+            required :true
+        }
     }],
     user: {
         type : mongoose.Schema.Types.ObjectId,
