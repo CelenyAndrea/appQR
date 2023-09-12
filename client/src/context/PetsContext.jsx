@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { createPetRequest } from "../api/pets"
+import { createPetRequest, getPetsRequest } from "../api/pets"
 
 const PetContext = createContext()
 
@@ -14,7 +14,7 @@ export const usePets = () => {
 
 // eslint-disable-next-line react/prop-types
 export function PetProvider({ children }) { 
-    const [pets] = useState({
+    const [pets, setPets] = useState({
         name: "",
         gender:"",
         image: "",
@@ -35,10 +35,20 @@ export function PetProvider({ children }) {
         }
     }
 
+    const getPets = async () => {
+        try {
+            const res = await getPetsRequest()
+            setPets(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <PetContext.Provider value={{
             pets,
-            createPets
+            createPets,
+            getPets
         }}>
             {children}
         </PetContext.Provider>

@@ -1,20 +1,20 @@
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { usePets } from '../context/PetsContext';
 
 function PetsForm() {
 
-  const {control, register, handleSubmit} = useForm();
+  const {register, handleSubmit} = useForm();
   const {createPets} = usePets();
   
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    //console.log(data);
     createPets(data);
   })
   
-  const {fields} = useFieldArray({
-    control,
-    name: "contacts",
-  })
+  // const {fields} = useFieldArray({
+  //   control,
+  //   name: "contacts",
+  // })
 
   return (
     <div className='bg-zinc-800 max-w-md p-10 rounded-md'>
@@ -40,6 +40,7 @@ function PetsForm() {
             id="name"
             className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
             {...register("name")}
+            autoFocus
           />
         </div>
 

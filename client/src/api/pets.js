@@ -7,7 +7,7 @@ export const getPetRequest = (id) =>
     axios.get(`/pets/${id}`)
 
 export const createPetRequest = (pet) => 
-    axios.post('/pets', pet, {headers:{"Content-Type" : "application/json"}})
+    axios.post('/pets', pet)
 
 
 export const updatePetRequest = (pet) => 
