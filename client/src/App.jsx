@@ -8,12 +8,14 @@ import Profile from "./pages/Profile.jsx"
 import Home from "./pages/Home.jsx"
 import ProtectedRoute from "./ProtectedRoute.jsx"
 import { PetProvider } from "./context/PetsContext.jsx"
+import Navbar from "./components/Navbar.jsx"
 
 function App() {
   return (
     <AuthProvider>
       <PetProvider>
         <BrowserRouter>
+          <Navbar/>
           <Routes>
 
             <Route path="/" element={<Home/>} />

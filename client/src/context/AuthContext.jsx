@@ -44,6 +44,13 @@ export const AuthProvider = ({children}) => {
             setAuthErrors([error.response.data]);
         }
     }
+
+    const logout = () => {
+        Cookies.remove("token");
+        setIsAuthenticated(false);
+        setUser(null);
+    }
+
 // tiempo para borrar mensajes de error
     useEffect(() => {
         if(authErrors.length > 0) {
@@ -95,7 +102,8 @@ export const AuthProvider = ({children}) => {
             isAuthenticated,
             authErrors,
             signin,
-            loading
+            loading,
+            logout
         }}> 
             {children}
         </AuthContext.Provider>
