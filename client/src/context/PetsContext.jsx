@@ -1,5 +1,10 @@
 import { createContext, useContext, useState } from "react";
-import { createPetRequest, getPetsRequest } from "../api/pets"
+import { 
+    createPetRequest, 
+    getPetsRequest, 
+    deletePetRequest, 
+    getPetRequest, 
+    updatePetRequest } from "../api/pets"
 
 const PetContext = createContext()
 
@@ -44,11 +49,43 @@ export function PetProvider({ children }) {
         }
     }
 
+    const deletePet = async (id) => {
+        try {
+            const res = await deletePetRequest(id)
+            console.log(res);
+            if(res.status === 204) 
+                setPets(pets.filter(pet => pet._id != id))
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getPet = async (id) => {
+        try {
+            const res = await getPetRequest(id)
+            return res.data
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const updatePet = async (id, pet) => {
+        try {
+            const res = await updatePetRequest(id, pet)
+            return res.data
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <PetContext.Provider value={{
             pets,
             createPets,
-            getPets
+            getPets,
+            deletePet,
+            getPet,
+            updatePet
         }}>
             {children}
         </PetContext.Provider>

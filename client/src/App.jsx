@@ -6,6 +6,7 @@ import Pets from "./pages/Pets.jsx"
 import PetsForm from "./pages/PetsForm.jsx"
 import Profile from "./pages/Profile.jsx"
 import Home from "./pages/Home.jsx"
+import Pet from "./pages/Pet.jsx"
 import ProtectedRoute from "./ProtectedRoute.jsx"
 import { PetProvider } from "./context/PetsContext.jsx"
 import Navbar from "./components/Navbar.jsx"
@@ -16,20 +17,22 @@ function App() {
       <PetProvider>
         <BrowserRouter>
           <Navbar/>
-          <Routes>
+          <main className="container mx-auto px-10">
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/login" element={<LoginPage/>} />
+              <Route path="/register" element={<RegisterPage/>} />
+              <Route path="/:id" element={<Pet/>} />
 
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<LoginPage/>} />
-            <Route path="/register" element={<RegisterPage/>} />
+              <Route element = {<ProtectedRoute/>}>
+                <Route path="/pets" element={<Pets/>} />
+                <Route path="/add-pet" element={<PetsForm/>} />
+                <Route path="/pet/:id" element={<PetsForm/>} />
+                <Route path="/profile" element={<Profile/>} />
+              </Route>
 
-            <Route element = {<ProtectedRoute/>}>
-              <Route path="/pets" element={<Pets/>} />
-              <Route path="/add-pet" element={<PetsForm/>} />
-              <Route path="/pet/:id" element={<PetsForm/>} />
-              <Route path="/profile" element={<Profile/>} />
-            </Route>
-
-          </Routes>
+            </Routes>
+          </main>
         </BrowserRouter>
       </PetProvider>
     </AuthProvider> 

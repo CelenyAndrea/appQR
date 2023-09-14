@@ -9,9 +9,8 @@ export const getPetRequest = (id) =>
 export const createPetRequest = (pet) => 
     axios.post('/pets', pet)
 
-
-export const updatePetRequest = (pet) => 
-    axios.put(`/pets/${pet._id}`, pet)
+export const updatePetRequest = (id, pet) => 
+    axios.put(`/pets/${id}`, pet)
 
 export const deletePetRequest = (id) => 
     axios.delete(`/pets/${id}`)

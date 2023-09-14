@@ -13,7 +13,7 @@ function RegisterPage() {
 
     useEffect(() => {
         if(isAuthenticated) 
-            navigate("/pets")
+            navigate("/add-pet")
     }, [isAuthenticated, navigate])
  
     const onSubmit = handleSubmit((values) => {

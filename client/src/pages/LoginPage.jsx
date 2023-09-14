@@ -29,8 +29,8 @@ function LoginPage() {
           ))
         }
         <form onSubmit={onSubmit}>
-        <h1 className="text-3xl font-bold">Inicio de Sesión</h1>
-          <label>Email:</label>
+        <h1 className="text-3xl font-bold">Introduce o edita la información</h1>
+          <label>Código:</label>
           <input 
             type="email"
             name="email"
@@ -44,7 +44,7 @@ function LoginPage() {
             )
           }
 
-          <label>Contraseña:</label>
+          <label>Confirma tu código:</label>
           <input 
             type="password" 
             name="password"

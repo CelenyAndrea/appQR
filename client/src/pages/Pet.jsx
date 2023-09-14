@@ -1,14 +1,11 @@
 import { useEffect } from 'react'
 import { usePets } from '../context/PetsContext'
-import { Link } from 'react-router-dom'
+//import { useParams } from 'react-router-dom'
 
-function Pets() {
-  const { 
-    getPets, 
-    pets, 
-    // deletePet 
-  } = usePets()
+function Pet() {
+  const { getPets, pets } = usePets()
   console.log(pets)
+  //const params = useParams()
 
   useEffect(() => {
     getPets()
@@ -22,18 +19,6 @@ function Pets() {
           <div key={pet._id} className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
             <header className='flex justify-between'>
               <h1>Yo soy</h1>
-              <div>
-                <Link to={`/pet/${pet._id}`}
-                  >Editar
-                </Link>
-
-                {/* <button 
-                  onClick={() => {
-                    deletePet(pet._id)
-                  }}
-                  >Eliminar
-                </button> */}
-              </div>
             </header>
             <p>{pet.name}</p>
             <p>{pet.gender}</p>
@@ -57,4 +42,4 @@ function Pets() {
   )
 }
 
-export default Pets;
+export default Pet;

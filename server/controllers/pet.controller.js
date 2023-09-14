@@ -43,7 +43,7 @@ export const getPet = async (req, res) => {
         res.json(pet)
         
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: "Not found" });
     }
 };
 
