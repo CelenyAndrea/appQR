@@ -29,7 +29,7 @@ function LoginPage() {
           ))
         }
         <form onSubmit={onSubmit}>
-        <h1 className="text-3xl font-bold">Introduce o edita la información</h1>
+        <h1 className="text-3xl font-bold">Introduce o edita información</h1>
           <label>Código:</label>
           <input 
             type="email"

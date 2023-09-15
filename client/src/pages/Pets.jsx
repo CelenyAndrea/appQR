@@ -26,7 +26,6 @@ function Pets() {
                 <Link to={`/pet/${pet._id}`}
                   >Editar
                 </Link>
-
                 {/* <button 
                   onClick={() => {
                     deletePet(pet._id)
