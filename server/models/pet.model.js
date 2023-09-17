@@ -3,42 +3,48 @@ import mongoose from "mongoose";
 const PetSchema = new mongoose.Schema({
     name: {
         type : String,
-        required : true
+        required : true,
+        trim: true //quita espacios iniciales y/o finales en blanco
     },
     gender: {
         type : String,
-        required : true
+        required : true,
+        trim: true
     },
     image: {
-        type : String,
-        // data: Buffer,
-        // contentType: String,
-        required : true
+        url : String,
+        public_id: String
     }, 
     description: {
         type : String,
-        required : false
+        required : false,
+        trim: true
     },
     city: {
         type : String,
-        required : true
+        required : true,
+        trim: true
     },
     barrio: {
         type : String,  
-        required : true
+        required : true,
+        trim: true
     },
     address: {
         type : String,
-        required : false
+        required : false,
+        trim: true
     },
     contacts : [{
         contact: {
             type : String,
-            required : true
+            required : true,
+            trim: true
         },
         phone: {
-            type : Number ,
-            required :true
+            type : Number,
+            required :true,
+            trim: true
         }
     }],
     user: {

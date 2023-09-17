@@ -112,7 +112,7 @@ function Pet() {
             disabled="true"
           />
         </div>
-
+       
         <div>
           <span>Si quieres puedes colocar la dirección:</span>
           <input 
@@ -120,7 +120,7 @@ function Pet() {
             name="address" 
             id="address"
             className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("address")}
+            {...register("address")} 
             disabled="true"
           />
         </div>

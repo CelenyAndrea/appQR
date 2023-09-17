@@ -7,8 +7,8 @@ import { createPets, deletePets, getPet, getPets, updatePets } from "../controll
 
 const router = Router()
 
+router.get('/pets/:id', getPet)
 router.get('/pets',authRequired, getPets)
-router.get('/pets/:id',authRequired, getPet)
 router.post('/pets',authRequired, createPets)
 //validateSchema(createPetSchema),
 router.put('/pets/:id',authRequired, updatePets)

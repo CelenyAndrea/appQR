@@ -81,6 +81,7 @@ export function PetProvider({ children }) {
     return (
         <PetContext.Provider value={{
             pets,
+            setPets,
             createPets,
             getPets,
             deletePet,
