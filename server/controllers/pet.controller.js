@@ -37,7 +37,7 @@ export const createPets = async (req, res) => {
             barrio, 
             address, 
             contacts, 
-            //user: req.user.id
+            user: req.user.id
         })
         const savePet = await newPet.save()
         res.json(savePet)
