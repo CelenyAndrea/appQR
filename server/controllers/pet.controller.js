@@ -91,7 +91,7 @@ export const deletePets = async (req, res) => {
         }    
         
         if(deletedPet.image.public_id) {
-            await deletedPet(deletedPet.image.public_id)
+            await deleteImage(deletedPet.image.public_id)
         }
         return res.sendStatus(204);
 
