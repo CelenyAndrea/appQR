@@ -15,3 +15,12 @@ export const uploadImage = async filePath => {
 export const deleteImage = async id => {
     return await cloudinary.uploader.destroy(id)
 }
+
+
+export const changeImage = async URL => {
+    return await cloudinary.uploader.explicit(URL, { type: "fetch", invalidate: true })
+}
+
+// export const changeImage = async id => {
+//    return await cloudinary.uploader.explicit(id)
+// }   

@@ -1,205 +1,105 @@
-import { useForm } from 'react-hook-form'
+import { Formik, Form, Field } from 'formik'
 import { usePets } from '../context/PetsContext'
-import { useNavigate, useParams } from "react-router-dom"
-import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 
 function PetsForm() {
-
-  const { register, handleSubmit, setValue } = useForm();
-  const { createPets, getPet, updatePet } = usePets();
-  const navigate = useNavigate()
+  const { createPets, getPet, updatePet } = usePets()
   const params = useParams()
-  
-  const onSubmit = handleSubmit((data) => {
-    //console.log(data);
-    if (params.id) {
-      updatePet(params.id, data)
-    }else {
-      createPets(data);
-    }
-    navigate("/pets")
+  const navigate = useNavigate();
+  const [pet, setPet] = useState({
+    name: "Nombre",
+    gender:"female",
+    image: null,
+    description: "Descripción",
+    city: "Ciudad",
+    barrio: "Barrio",
+    address: "",
+    contact1: "Humano 1",
+    phone1: "# de contacto",
+    contact2: "", 
+    phone2: "",
+    contact3: "", 
+    phone3: "",
   })
 
   useEffect(() => {
-    async function loadPet() {
+    const fetchPet = async () => {
       if(params.id) {
         const pet = await getPet(params.id)
-        console.log(pet);
-        setValue('image', pet.image)
-        setValue('name', pet.name)
-        setValue('gender', pet.gender)
-        setValue('description', pet.description)
-        setValue('city', pet.city)
-        setValue('barrio', pet.barrio)
-        setValue('address', pet.address)
-        setValue('contacts', pet.contacts)
+        setPet(pet)
       }
     }
-    loadPet()
-  }, [getPet, params.id, setValue])
-  
-  // const {fields} = useFieldArray({
-  //   control,
-  //   name: "contacts",
-  // })
+    fetchPet()
+  }, [getPet, params.id])
 
   return (
-    <div className='bg-zinc-800 max-w-md p-10 rounded-md'>
-      <h1>Datos de esta bella mascota!!</h1>
-      <form onSubmit={onSubmit}>
+    <div className='flex items-center justify-center'>
+      <Formik 
+        className='text-black'
+        initialValues={pet}
+        onSubmit={async(values) => {
+          if(params.id) {
+            await updatePet(params.id, values)
+          } else {
+            await createPets(values);
+          }
+          navigate("/pets")
+        }}
+        enableReinitialize
+      >
+      {({ handleSubmit, setFieldValue }) => (
 
-        <div>
-          <span>Imagen:</span>
-          <input 
-            type="text" 
-            name="image" 
-            id="image"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("image")}
-          />
-        </div>
+        <Form onSubmit={handleSubmit}>
+          <label htmlFor="image">Selecciona la mejor foto de tu mascota: </label>
+            <input type='file'name='image' className='text-sm block' onChange={(e) => setFieldValue('image', e.target.files[0])}/>
 
-        <div>
-          <span>Nombre:</span>
-          <input 
-            type="text" 
-            name="name" 
-            id="name"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("name")}
-            autoFocus
-          />
-        </div>
+          <label htmlFor="name">Nombre: </label>
+            <Field name='name' placeholder='Nombre' className='text-black text-sm block'/>
 
-        <div>
-          <label className='px-4 py-2 my-2'> Es: 
-            <select 
-              className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-              name="gender" 
-              id="gender"
-              {...register("gender")} >
-              <option
-                value="female">
-                Una hermosa Hembra
-              </option>
-              <option
-                value="male">
-                Un monumental Macho
-              </option>
-            </select>
-          </label>
-        </div>
+          <label htmlFor="gender">Genero: </label>  
+            <Field component="select" name='gender' className='text-black text-sm block'>
+              <option value="">Tu mascota es</option>
+              <option value="female">Una hermosa Hembra</option>
+              <option value="male">Un monumental Macho</option>
+            </Field>
 
-        <div>
-          <span>Escribe lo que te parece importante que sepa la persona que encuentre tu mascota:</span>
-          <textarea 
-            rows="3" 
-            placeholder="Descripción" 
-            name="description" 
-            id="description"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("description")}
-          />
-        </div>
+          <label htmlFor="description">Escribe lo que te parece importante que sepa la persona que encuentre tu mascota: </label>
+            <Field component='textarea' name='description' placeholder='Descripción' className='text-black text-sm block'/>
 
-        <div>
-          <span>Ciudad:</span>
-          <input 
-            type="text" 
-            placeholder="Donde vive la mascota" 
-            name="city" 
-            id="city"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("city")}
-          />
-        </div>
+          <label htmlFor="city">Ciudad: </label>
+            <Field name='city' placeholder='Ciudad' className='text-black text-sm block'/>
 
-        <div>
-          <span>Barrio:</span>
-          <input 
-            type="text" 
-            name="barrio" 
-            id="barrio"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("barrio")}
-          />
-        </div>
+          <label htmlFor="barrio">Barrio: </label>
+            <Field name='barrio' placeholder='Barrio' className='text-black text-sm block'/>
 
-        <div>
-          <span>Si quieres puedes colocar la dirección:</span>
-          <input 
-            type="text" 
-            name="address" 
-            id="address"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("address")}
-          />
-        </div>
+          <label htmlFor="address">Si quieres puedes colocar la dirección: </label>
+            <Field name='address' placeholder='Dirección' className='text-black text-sm block'/>
 
-        {/* {fields.map((field, i) => (
-          <div key={field.id}>
-            <span>La persona que la encuentre debe llamar a:</span>
-            <input 
-              type="text" 
-              placeholder="Nombre del humano" 
-              className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-              {...register(`contacts.${i}.contact`)}
-            />
+          <p>Puedes colocar de 1 a 3 contactos</p>
+          <label htmlFor="contact1">Humano 1: </label>
+            <Field name='contact1' placeholder='Humano 1' className='text-black text-sm block'/>
 
-            <span>Número de telefono:</span>
-            <input 
-              type="number" 
-              className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-              {...register(`contacts.${i}.phone`)}
-            />
-          </div>
-        ))} */}
-        
-        <div>
-          <span>La persona que la encuentre debe llamar a:</span>
-          <input 
-            type="text" 
-            placeholder="Nombre del humano" 
-            name="contact" 
-            id="contact"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("contacts[0].contact")}
-          />
+          <label htmlFor="phone1">Numero de contacto: </label>
+            <Field name= 'phone1' placeholder='Celular' className='text-black text-sm block'/>
 
-          <span>Número de telefono:</span>
-          <input 
-            type="phone" 
-            name="phone" 
-            id="phone"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("contacts[0].phone")}
-          />
+          <label htmlFor="contact2">Humano 2: </label>
+            <Field name='contact2' placeholder='Humano 1' className='text-black text-sm block'/>
 
-          <span>O llamar a:</span>
-          <input 
-            type="text" 
-            placeholder="Nombre del humano" 
-            name="contact" 
-            id="contact"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("contacts[1].contact")}
-          />
+          <label htmlFor="phone2">Numero de contacto: </label>
+            <Field name= 'phone2' placeholder='Celular' className='text-black text-sm block'/>
+            
+          <label htmlFor="contact3">Humano 3: </label>
+            <Field name='contact3' placeholder='Humano 1' className='text-black text-sm block'/>
 
-          <span>Número de telefono:</span>
-          <input 
-            type="phone" 
-            name="phone" 
-            id="phone"
-            className='w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md'
-            {...register("contacts[1].phone")}
-          />
-        </div>
+          <label htmlFor="phone3">Numero de contacto: </label>
+            <Field name= 'phone3' placeholder='Celular' className='text-black text-sm block'/>
 
-        <button>
-          Guardar
-        </button>
-
-      </form>
+          <button type='submit'>Guardar</button>
+        </Form>
+      )}
+      </Formik>
     </div>
   )
 }

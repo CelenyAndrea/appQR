@@ -1,54 +1,46 @@
-import { useEffect } from 'react'
 import { usePets } from '../context/PetsContext'
 import { Link } from 'react-router-dom'
 
+
 function Pets() {
   const { 
-    getPets, 
     pets, 
-    // deletePet 
+    deletePet 
   } = usePets()
-  console.log(pets)
-
-  useEffect(() => {
-    getPets()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  console.log('pets', pets)
 
   return (
-    <div className='grid grid-cols-3 gag-2'>
+    <div className='grid grid-cols-3 gag-4'>
       {Array.from(pets).map(pet => {
         return (
           <div key={pet._id} className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
             <header className='flex justify-between'>
               <h1>Yo soy</h1>
-              <div>
+              <div className='flex justify-between'>
                 <Link to={`/pet/${pet._id}`}
                   >Editar
                 </Link>
-                {/* <button 
+                <button 
                   onClick={() => {
                     deletePet(pet._id)
                   }}
                   >Eliminar
-                </button> */}
+                </button>
               </div>
             </header>
             <p>{pet.name}</p>
-            <p>{pet.gender}</p>
-            <p>{pet.image}</p>
+            {pet.image && <img alt='Mi Mascota' src={pet.image.url}></img>}
+            {pet.gender === "female" ? <p>Una hermosa Hembra</p> : <p>Un monumental Macho</p>}
             <p>{pet.description}</p>
             <p>{pet.city}</p>
             <p>{pet.barrio}</p>
             <p>{pet.address}</p>
-            {Object.values(pet.contacts).map((cont, index) => {
-              return (
-                <div key={index}>
-                  <p>{cont.contact}</p>
-                  <p>{cont.phone}</p>
-                </div>
-              )
-            })}
+            <p>{pet.contact1}</p>
+            <p>{pet.phone1}</p>
+            <p>{pet.contact2}</p>
+            <p>{pet.phone2}</p>
+            <p>{pet.contact3}</p>
+            <p>{pet.phone3}</p>
           </div>
         )
       })}

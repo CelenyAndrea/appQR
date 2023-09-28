@@ -12,8 +12,8 @@ const PetSchema = new mongoose.Schema({
         trim: true
     },
     image: {
-        url : String,
-        public_id: String
+        public_id: String,
+        url : String
     }, 
     description: {
         type : String,
@@ -35,18 +35,36 @@ const PetSchema = new mongoose.Schema({
         required : false,
         trim: true
     },
-    contacts : [{
-        contact: {
-            type : String,
-            required : true,
-            trim: true
-        },
-        phone: {
-            type : Number,
-            required :true,
-            trim: true
-        }
-    }],
+    contact1: {
+        type : String,
+        required : false,
+        trim: true
+    },
+    phone1: {
+        type : String,
+        required : false,
+        trim: true
+    },
+    contact2: {
+        type : String,
+        required : false,
+        trim: true
+    },
+    phone2: {
+        type : String,
+        required : false,
+        trim: true
+    },
+    contact3: {
+        type : String,
+        required : false,
+        trim: true
+    },
+    phone3: {
+        type : String,
+        required : false,
+        trim: true
+    },
     user: {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User",

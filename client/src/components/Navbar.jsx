@@ -22,9 +22,9 @@ function Navbar() {
                         <li>
                             <Link to="/pets">Mi Mascota</Link>
                         </li>
-                        {/* <li>
+                        <li>
                             <Link to="/add-pet">Agregar Mascota</Link>
-                        </li> */}
+                        </li>
                         <li>
                             <Link to="/" onClick={() => {logout()}}>Cerrar Sesion</Link>
                         </li>

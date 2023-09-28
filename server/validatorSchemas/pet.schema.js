@@ -1,8 +1,8 @@
 import {z} from "zod"
 
 export const createPetSchema = z.object({
-    name: z.string(
-        {required_error: "Escribe el nombre de tu mascota"}),
+    // name: z.string(
+    //     {required_error: "Escribe el nombre de tu mascota"}),
     gender: z.enum(
         ["male", "female"]),
     description: z.string(

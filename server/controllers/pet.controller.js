@@ -15,32 +15,36 @@ export const getPets = async (req, res) => {
 
 export const createPets = async (req, res) => {
     try {
-        const {name, gender, description, city, barrio, address, contacts} = req.body
-        //console.log("usuario", req.user);
-        let image;
-
-        if(req.files.image) {
-            const result = await uploadImage(req.files.image.tempFilePath)
-            image = {
-                url: result.secure_url,
-                public_id: result.public_id
-            }
-            await fs.remove(req.files.image.tempFilePath)
-        }
+        const {name, gender, description, city, barrio, address, contact1, phone1, contact2, phone2, contact3, phone3} = req.body
+        console.log("usuario", req.user);
 
         const newPet = new Pet({
             name, 
             gender, 
-            image, 
             description, 
             city, 
             barrio, 
             address, 
-            contacts, 
+            contact1, 
+            phone1, 
+            contact2, 
+            phone2, 
+            contact3, 
+            phone3,
             user: req.user.id
         })
+
+        if(req.files?.image) {
+            const result = await uploadImage(req.files.image.tempFilePath)
+            newPet.image = {
+                public_id: result.public_id,
+                url: result.secure_url,
+            }
+            await fs.remove(req.files.image.tempFilePath)
+        }
+
         const savePet = await newPet.save()
-        res.json(savePet)
+        return res.json(savePet)
         
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -61,19 +65,32 @@ export const getPet = async (req, res) => {
 
 export const updatePets = async (req, res) => {
     try {
-        const {name, gender, image, description, city, barrio, address, contacts, phones} = req.body
+        const {name, gender, description, city, barrio, address, contact1, phone1, contact2, phone2, contact3, phone3 } = req.body
+
+        if(req.files?.image) {
+            const result = await uploadImage(req.files.image.tempFilePath)
+            req.body.image = {
+                public_id: result.public_id,
+                url: result.secure_url,
+            }
+            await fs.remove(req.files.image.tempFilePath)
+        }
         
         const updatePet = await Pet.findByIdAndUpdate(
             { _id: req.params.id },
             { name, 
             gender, 
-            image, 
+            image: req.body.image, 
             description, 
             city, 
             barrio, 
             address, 
-            contacts, 
-            phones },
+            contact1, 
+            phone1, 
+            contact2, 
+            phone2, 
+            contact3, 
+            phone3 },
             { new: true }
         )
         return res.json(updatePet)
@@ -90,9 +107,10 @@ export const deletePets = async (req, res) => {
             return res.status(404).json({ message: "Pet not found" })
         }    
         
-        if(deletedPet.image.public_id) {
+        if(deletedPet.image?.public_id) {
             await deleteImage(deletedPet.image.public_id)
         }
+
         return res.sendStatus(204);
 
     } catch (error) {

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { 
     createPetRequest, 
     getPetsRequest, 
@@ -27,14 +27,20 @@ export function PetProvider({ children }) {
         city: "",
         barrio: "",
         address: "",
-        contacts: [{contact:"", phone: 0}],
+        contact1: "",
+        phone1: "",
+        contact2: "", 
+        phone2: "",
+        contact3: "", 
+        phone3: "",
         user: ""
     })
 
     const createPets = async (pet) => {
         try {
             const res = await createPetRequest(pet)
-            console.log(res.data);
+            console.log('createPets', res.data);
+            setPets([...pets, res.data])
         } catch (error) {
             console.log(error);
         }
@@ -49,12 +55,12 @@ export function PetProvider({ children }) {
         }
     }
 
-    const deletePet = async (id) => {
+    const deletePet = async (_id) => {
         try {
-            const res = await deletePetRequest(id)
-            console.log(res);
+            const res = await deletePetRequest(_id)
+            console.log('deletePet', res);
             if(res.status === 204) 
-                setPets(pets.filter(pet => pet._id != id))
+            setPets(pets.filter(pet => pet._id != pet._id))
         } catch (error) {
             console.log(error);
         }
@@ -63,6 +69,7 @@ export function PetProvider({ children }) {
     const getPet = async (id) => {
         try {
             const res = await getPetRequest(id)
+            console.log('pet', res.data);
             return res.data
         } catch (error) {
             console.log(error);
@@ -72,11 +79,16 @@ export function PetProvider({ children }) {
     const updatePet = async (id, pet) => {
         try {
             const res = await updatePetRequest(id, pet)
-            return res.data
+            console.log('updatePets', res.data);
+            setPets(pets.map(pet => pet._id === id ? res.data : pet))
         } catch (error) {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+        getPets()
+    }, [])
 
     return (
         <PetContext.Provider value={{
