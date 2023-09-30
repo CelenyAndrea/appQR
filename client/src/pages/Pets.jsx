@@ -5,35 +5,39 @@ import { Link } from 'react-router-dom'
 function Pets() {
   const { 
     pets, 
-    deletePet 
+    //deletePet 
   } = usePets()
   console.log('pets', pets)
 
   return (
-    <div className='grid grid-cols-3 gag-4'>
+    <div className='flex items-center justify-center h-screen'>
       {Array.from(pets).map(pet => {
         return (
-          <div key={pet._id} className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
-            <header className='flex justify-between'>
-              <h1>Yo soy</h1>
-              <div className='flex justify-between'>
+          <div key={pet._id} className='w-w360 h-510 bg-customBlack rounded-2xl p-6 flex flex-col gap-x-2 text-white'>
+
+            <div className='w-full h-auto'>
+                {pet.image && <img alt='Mi Mascota' src={pet.image.url} className='rounded-r30'></img>}
+            </div>
+
+            <div className='justify-between w-full h-auto flex flex-col gap-y-3 p-2'>
+              <div className='flex justify-end'>
                 <Link to={`/pet/${pet._id}`}
                   >Editar
                 </Link>
-                <button 
+                {/* <button 
                   onClick={() => {
                     deletePet(pet._id)
                   }}
                   >Eliminar
-                </button>
+                </button> */}
               </div>
-            </header>
-            <p>{pet.name}</p>
-            {pet.image && <img alt='Mi Mascota' src={pet.image.url}></img>}
-            {pet.gender === "female" ? <p>Una hermosa Hembra</p> : <p>Un monumental Macho</p>}
-            <p>{pet.description}</p>
-            <p>{pet.city}</p>
-            <p>{pet.barrio}</p>
+
+              <h1 className='font-black'>Yo soy {pet.name}</h1>
+              <p>Mi human@ quiere que sepas de mi que... {pet.description}</p>
+              <p>Me consideran {pet.gender === "female" ? <>Una hermosa Hembra</> : <>Un monumental Macho</>}</p>
+              <p>Vivo en {pet.city} en el barrio {pet.barrio}</p>
+            </div>
+
             <p>{pet.address}</p>
             <p>{pet.contact1}</p>
             <p>{pet.phone1}</p>

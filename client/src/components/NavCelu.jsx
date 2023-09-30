@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
 // eslint-disable-next-line react/prop-types
-function Navbar({toggleOpen}) {
+function NavCelu({toggleClose}) {
     const { 
         isAuthenticated, 
         logout, 
@@ -10,19 +10,8 @@ function Navbar({toggleOpen}) {
     } = useAuth()
 
     return (
-        <nav className="flex justify-between items-center h-16 bg-customBlue1 text-customSky relative shadow-xl">
-            <Link to="/">
-                <h1 className="pl-8 text-2xl font-bold">QR</h1>
-            </Link>
-
-            <div className="px-4 cursor-pointer md:hidden" onClick={toggleOpen}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
-                </svg>
-            </div>
-
-            <div className="pr-8 hidden md:block">
-                {isAuthenticated ? (
+        <div className="grid grid-rows-3 text-center bg-customBlue1 text-customSky" onClick={toggleClose}>
+            {isAuthenticated ? (
                     <>
                         {/* <h1>
                             Hola {user.username}
@@ -61,9 +50,8 @@ function Navbar({toggleOpen}) {
                             </Link>*/}
                     </>
                 )}
-            </div>   
-        </nav>
+        </div>
     )
 }
 
-export default Navbar
+export default NavCelu

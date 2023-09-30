@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    background: #202020;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(to right bottom, #051937, #274362, #4c718e, #76a3bb, #a5d7e8);
+    /* background: #0B2447; */
     color: white;
 }
