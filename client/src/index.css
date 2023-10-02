@@ -14,3 +14,14 @@ body {
     background: #F1F1E6;
     /* color: white; */
 }
+.register {
+    background-image: linear-gradient(
+        90deg,
+        rgb(32, 32, 32),
+        rgba(32, 32, 32, 0.5)
+        ),
+        url("https://img.freepik.com/foto-gratis/cerrar-mujer-escaneando-qr_23-2149303393.jpg?w=900&t=st=1696265561~exp=1696266161~hmac=b975e44fe569c4a9661d0df12dc55422954f5721f5814fca31e365436ef3c792");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

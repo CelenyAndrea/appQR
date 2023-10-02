@@ -22,8 +22,8 @@ function Pet() {
   return (
     <div className="p-10">
     <div  key={pets._id} className="bg-[url('https://img.freepik.com/vector-gratis/fondo-acuarela-lamina-dorada_52683-46208.jpg?w=900&t=st=1696200803~exp=1696201403~hmac=25c03c573eeced2832f127282439950cedcfa476e1c110157e3fa988732aa2f3')] bg-cover bg-center shadow-blue-500/50 flex flex-col mx-auto p-4 rounded-lg w-full md:w-1/2 shadow-xl text-center font-medium">
-      <div>
-        {pets.image && <img alt='Mi Mascota' src={pets.image.url} className='w-full object-cover rounded-t-lg'></img>}
+      <div className='max-w-sm mx-auto'>
+        {pets.image && <img alt='Mi Mascota' src={pets.image.url} className='w-full h-full object-cover rounded-t-2xl border-double border-4 border-indigo-500/50'></img>}
       </div>
             
       <div className="bg-gray-900 mx-4 rounded-lg flex items-center gap-2 -mt-8 z-10 shadow-xl py-2 px-6">

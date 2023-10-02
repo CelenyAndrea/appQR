@@ -10,13 +10,13 @@ function Pets() {
 
   return (
     <div>
-      <div className="p-10 grid grid-cols-2 gap-4 content-around">
+      <div className="p-10">
       {Array.from(pets).map(pet => {
         return (
           <div key={pet._id} className="bg-[url('https://img.freepik.com/vector-gratis/fondo-acuarela-lamina-dorada_52683-46208.jpg?w=900&t=st=1696200803~exp=1696201403~hmac=25c03c573eeced2832f127282439950cedcfa476e1c110157e3fa988732aa2f3')] bg-cover bg-center shadow-blue-500/50 shadow-xl flex flex-col mx-auto p-4 rounded-lg w-full md:w-1/2 text-center font-medium">
 
-            <div>
-              {pet.image && <img alt='Mi Mascota' src={pet.image.url} className='w-full object-cover rounded-t-lg'></img>}
+            <div className='max-w-sm mx-auto'>
+              {pet.image && <img alt='Mi Mascota' src={pet.image.url} className='w-full h-full object-cover rounded-t-2xl border-double border-4 border-indigo-500/50'></img>}
             </div>
             
             <div className="bg-gray-900 mx-4 rounded-lg flex items-center gap-2 -mt-8 z-10 shadow-xl py-2 px-6">
