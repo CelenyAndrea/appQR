@@ -6,7 +6,6 @@ import fileUpload from "express-fileupload";
 
 import authRoutes from "./routes/auth.routes.js";
 import petRoutes from "./routes/pet.routes.js";
-import imgRoutes from "./routes/img.routes.js"
 
 const app = express();
 
@@ -24,6 +23,5 @@ app.use(fileUpload({
 
 app.use("/api", authRoutes);
 app.use("/api", petRoutes);
-app.use("/api", imgRoutes)
 
 export default app;

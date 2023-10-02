@@ -10,7 +10,7 @@ function Navbar({toggleOpen}) {
     } = useAuth()
 
     return (
-        <nav className="flex justify-between items-center h-16 bg-customBlue1 text-customSky relative shadow-xl">
+        <nav className="flex justify-between items-center h-16 bg-gradient-to-r from-cyan-900 to-blue-900 text-customSky relative shadow-xl">
             <Link to="/">
                 <h1 className="pl-8 text-2xl font-bold">QR</h1>
             </Link>

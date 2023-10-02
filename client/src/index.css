@@ -7,7 +7,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: linear-gradient(to right bottom, #051937, #274362, #4c718e, #76a3bb, #a5d7e8);
-    /* background: #0B2447; */
-    color: white;
+    /* background-image: linear-gradient(to right bottom, #051937, #274362, #4c718e, #76a3bb, #a5d7e8);
+    background-attachment: fixed; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    background: #F1F1E6;
+    /* color: white; */
 }
