@@ -18,10 +18,10 @@ function PetsForm() {
     address: "",
     contact1: "Humano 1",
     phone1: "123",
-    contact2: "Humano 2", 
-    phone2: "456",
-    contact3: "Humano 3", 
-    phone3: "789",
+    contact2: "", 
+    phone2: "",
+    contact3: "", 
+    phone3: "",
   })
 
   useEffect(() => {

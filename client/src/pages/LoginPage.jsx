@@ -50,7 +50,7 @@ function LoginPage() {
               />
               {
                 errors.email && (
-                  <p className="text-red-500 text-sm">El correo es obligatorio</p>
+                  <p className="text-red-500 text-sm">El codigo es obligatorio</p>
                 )
               }
             </div>
@@ -64,7 +64,7 @@ function LoginPage() {
               />
               {
                 errors.password && (
-                  <p className="text-red-500 text-sm">La contraseña es obligatoria</p>
+                  <p className="text-red-500 text-sm">La confirmación del codigo es obligatoria</p>
                 )
               }
             </div>

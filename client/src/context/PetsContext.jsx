@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { 
     createPetRequest, 
     getPetsRequest, 
@@ -86,9 +86,9 @@ export function PetProvider({ children }) {
         }
     }
 
-    useEffect(() => {
-        getPets()
-    }, [])
+    // useEffect(() => {
+    //     getPets()
+    // }, [])
 
     return (
         <PetContext.Provider value={{

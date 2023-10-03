@@ -1,12 +1,19 @@
 import { usePets } from '../context/PetsContext'
 import { Link } from 'react-router-dom'
+import { useEffect } from "react";
 
 function Pets() {
   const { 
     pets, 
+    getPets,
     //deletePet 
   } = usePets()
   console.log('pets', pets)
+
+  useEffect(() => {
+    getPets()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div>
