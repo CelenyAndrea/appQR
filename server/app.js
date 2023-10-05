@@ -10,7 +10,7 @@ import petRoutes from "./routes/pet.routes.js";
 const app = express();
 
 app.use(cors({
-    origin: "https://app-qr-sigma.vercel.app/",
+    origin: ["https://app-qr-sigma.vercel.app/"],
     credentials: true
 }));
 app.use(morgan("dev"));
