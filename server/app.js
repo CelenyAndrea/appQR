@@ -11,18 +11,11 @@ const app = express();
 
 app.use(cors({
 
+    //origin: "*",
+    origin: "http://localhost:5173/",
     //origin: "https://app-qr-sigma.vercel.app/",
-    origin: "*",
     credentials: true
 }));
-app.use((req,res,next)=>{
-    res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://app-qr-sigma.vercel.app/');
-    if(req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
-        return res.status(200).json({});
-    }
-    next();
-});
 
 app.use(morgan("dev"));
 app.use(express.json());
