@@ -6,7 +6,7 @@ import {
     getPet, 
     getPets, 
     updatePets, 
-    optionsPets 
+    //optionsPets 
 } from "../controllers/pet.controller.js";
 //import { createPetSchema } from "../validatorSchemas/pet.schema.js";
 //import { validateSchema } from "../middlewares/validateSchemas.js";
@@ -20,6 +20,6 @@ router.post('/pets',authRequired, createPets)
 //validateSchema(createPetSchema),
 router.put('/pets/:id',authRequired, updatePets)
 router.delete('/pets/:id',authRequired, deletePets)
-router.options('/pets/:id',authRequired, optionsPets)
+//router.options('/pets/:id',authRequired, optionsPets)
 
 export default router
