@@ -3,6 +3,10 @@
         {
             "source": "/api/(.*)",
             "destination": "https://app-qr-api.vercel.app/:path*"
+        },
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/index.js"
         }
     ]
 }
