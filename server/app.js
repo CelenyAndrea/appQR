@@ -18,9 +18,9 @@ app.use(cors({
     //origin: "http://localhost:5173",
     origin: whiteList,
     credentials: true,
-    methods: ['GET','POST','DELETE','UPDATE','PUT','OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header'],
-    optionsSuccessStatus: 200,
+    methods: ['GET','POST','DELETE','UPDATE','PUT'],
+    //allowedHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header'],
+    //optionsSuccessStatus: 200,
 }));
 
 app.use(morgan("dev"));
