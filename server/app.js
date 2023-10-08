@@ -9,14 +9,16 @@ import petRoutes from "./routes/pet.routes.js";
 
 const app = express();
 
+const whiteList = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
+
 app.use(cors({
 
     //origin: "*",
     //origin: "http://localhost:5173",
-    origin: "https://app-qr-sigma.vercel.app/",
-    methods: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    origin: whiteList,
+    // credentials: true,
+    // methods: '*',
+    // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(morgan("dev"));
