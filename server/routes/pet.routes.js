@@ -13,6 +13,6 @@ router.post('/pets',authRequired, createPets)
 //validateSchema(createPetSchema),
 router.put('/pets/:id',authRequired, updatePets)
 router.delete('/pets/:id',authRequired, deletePets)
-router.options('/pets/:id',authRequired, optionsPets)
+router.options('/pets',authRequired, optionsPets)
 
 export default router
