@@ -118,14 +118,14 @@ export const deletePets = async (req, res) => {
     }
 };
 
-export const optionsPets = (req, res) => {
-    const ACCEPTED_ORIGINS = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
-    const origin = req.header('origin')
+// export const optionsPets = (req, res) => {
+//     const ACCEPTED_ORIGINS = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
+//     const origin = req.header('origin')
 
-    if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
-        res.header('Access-Control-Allow-Origin', origin)
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-        res.header('Access-Control-Request-Headers', 'Content-Type')
-    }
-    res.send(200)
-}
+//     if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
+//         res.header('Access-Control-Allow-Origin', origin)
+//         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+//         res.header('Access-Control-Request-Headers', 'Content-Type')
+//     }
+//     res.send(200)
+// }
