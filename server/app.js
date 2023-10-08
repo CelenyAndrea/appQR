@@ -16,7 +16,7 @@ app.use(cors({
     //origin: "*",
     //origin: "http://localhost:5173",
     origin: whiteList,
-    // credentials: true,
+    credentials: true,
     // methods: '*',
     // allowedHeaders: ['Content-Type', 'Authorization'],
 }));
