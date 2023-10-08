@@ -117,3 +117,14 @@ export const deletePets = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+export const optionsPets = (req, res) => {
+    const ACCEPTED_ORIGINS = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
+    const origin = req.header('origin')
+
+    if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
+        res.header('Access-Control-Allow-Origin', origin)
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+    }
+    res.send(200)
+}

@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.routes.js";
 import petRoutes from "./routes/pet.routes.js";
 
 const app = express();
+app.disable('x-powered-by')
 
 const whiteList = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
 
