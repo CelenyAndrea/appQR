@@ -1,5 +1,11 @@
 {
-    "rewrites": [
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "node server"
+        }
+    ],
+    "routes": [
         {
             "source": "/api/(.*)",
             "destination": "/api/index.js"
