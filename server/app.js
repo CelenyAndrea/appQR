@@ -31,15 +31,15 @@ app.use(cors())
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: './upload'
 }))
 
+app.use(express.static(join(__dirname, '../client/dist')))
+
 app.use("/api", authRoutes);
 app.use("/api", petRoutes);
-
-console.log(__dirname);
-app.use(express.static(join(__dirname, '../client/dist')))
 
 export default app;
