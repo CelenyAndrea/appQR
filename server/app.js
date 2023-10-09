@@ -1,7 +1,7 @@
 import express from "express"
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+//import cors from "cors";
 import fileUpload from "express-fileupload";
 
 import authRoutes from "./routes/auth.routes.js";
@@ -10,7 +10,7 @@ import petRoutes from "./routes/pet.routes.js";
 const app = express();
 app.disable('x-powered-by')
 
-app.use(cors())
+//app.use(cors())
 
 // const whiteList = ['http://localhost:5173', 'https://app-qr-sigma.vercel.app/']
 
