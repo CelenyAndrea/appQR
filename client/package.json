@@ -35,5 +35,5 @@
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
   },
-  "proxi": "http://localhost:3001/api"
+  "proxi": "https://app-qr-api.vercel.app/"
 }
