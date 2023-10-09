@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://app-qr-api.vercel.app/',
+        target: 'http://localhost:3001',
       }   
     }
   },
