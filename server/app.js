@@ -3,12 +3,16 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 //import cors from "cors";
 import fileUpload from "express-fileupload";
+import {dirname, join} from 'path'
+import { fileURLToPath } from 'url'
 
 import authRoutes from "./routes/auth.routes.js";
 import petRoutes from "./routes/pet.routes.js";
 
 const app = express();
 app.disable('x-powered-by')
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 //app.use(cors())
 
@@ -32,6 +36,8 @@ app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: './upload'
 }))
+
+app.use(express.static(join(__dirname, '../client/dist')))
 
 app.use("/api", authRoutes);
 app.use("/api", petRoutes);
