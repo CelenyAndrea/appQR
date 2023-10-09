@@ -37,7 +37,7 @@ app.use(fileUpload({
     tempFileDir: './upload'
 }))
 
-app.use(express.static(join(__dirname, '../client/dist')))
+app.use(express.static(join(__dirname, './dist')))
 
 app.use("/api", authRoutes);
 app.use("/api", petRoutes);
