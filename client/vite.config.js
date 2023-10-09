@@ -11,16 +11,6 @@ export default defineConfig({
       }
     }),
   ],
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://app-qr-api.vercel.app/",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
   // root: 'src',
   // build: {
   //   outDir: '../dist'
