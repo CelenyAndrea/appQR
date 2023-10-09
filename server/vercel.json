@@ -1,7 +1,6 @@
 {
     "builds": [
         {
-            "source": "./index.js",
             "use": "node server"
         }
     ],
